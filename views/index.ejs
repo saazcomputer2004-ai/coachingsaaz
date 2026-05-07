@@ -1,0 +1,1165 @@
+<%- include("partials/header") %>
+
+<style>
+:root {
+  --red: #e63312;
+  --dark: #1a1a2e;
+  --gold: #f5a623;
+  --light-bg: #f8f9fa;
+}
+
+
+
+/* HERO */
+.hero-section-new {
+  background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section-new::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 650px; height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230,51,18,.18) 0%, transparent 70%);
+}
+.hero-section-new::after {
+  content: '';
+  position: absolute;
+  bottom: -20%; left: -5%;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,166,35,.12) 0%, transparent 70%);
+}
+.hero-badge {
+  background: rgba(230,51,18,.2);
+  border: 1px solid rgba(230,51,18,.5);
+  color: var(--red);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.hero-section-new h1 {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero-section-new h1 span { color: var(--gold); }
+.hero-section-new .hero-lead {
+  color: rgba(255,255,255,.75);
+  font-size: 1.1rem;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+.btn-hero {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  margin-right: 12px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .3s;
+}
+.btn-hero:hover { background: #c72a0e; color: #fff; transform: translateY(-2px); }
+.btn-hero-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.4);
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .3s;
+}
+.btn-hero-outline:hover { border-color: #fff; color: #fff; }
+.hero-stats { display: flex; gap: 40px; margin-top: 48px; flex-wrap: wrap; }
+.stat-num { color: var(--gold); font-size: 2rem; font-weight: 800; }
+.stat-label { color: rgba(255,255,255,.6); font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; }
+.hero-card {
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: 28px;
+  color: #fff;
+}
+.hero-card h4 { font-weight: 700; margin-bottom: 16px; font-size: 1.1rem; }
+.course-pill {
+  background: rgba(230,51,18,.2);
+  border: 1px solid rgba(230,51,18,.4);
+  color: #ff9f9a;
+  font-size: .78rem;
+  padding: 5px 14px;
+  border-radius: 50px;
+  display: inline-block;
+  margin: 4px;
+  font-weight: 600;
+}
+.cert-badges { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.cert-badge {
+  background: rgba(245,166,35,.15);
+  border: 1px solid rgba(245,166,35,.4);
+  color: var(--gold);
+  font-size: .75rem;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+/* SECTION COMMON */
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-label {
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .85rem;
+}
+.section-title h2 { font-size: 2.4rem; font-weight: 800; margin-top: 8px; }
+.section-title p { color: #666; max-width: 580px; margin: 12px auto 0; }
+
+/* FEATURES */
+.features-dark {background: linear-gradient(135deg, #357abf, #294d72); padding: 80px 0; }
+.feature-card-dark {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  color: #fff;
+  height: 100%;
+  transition: all .3s;
+}
+.feature-card-dark:hover {
+  background: rgba(230, 51, 18, 0.10);
+border: 1px solid rgba(230, 51, 18, 0.10);
+  transform: translateY(-5px);
+}
+.feature-icon {
+  width: 60px; height: 60px;
+  background: rgba(230,51,18,.15);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 1.6rem;
+}
+.feature-card-dark h5 { font-weight: 700; margin-bottom: 10px; }
+.feature-card-dark p { color: rgba(255,255,255,.6); font-size: .9rem; margin: 0; }
+
+/* COURSES */
+.courses-section { padding: 90px 0; background: var(--light-bg); }
+.course-tabs .nav-pills .nav-link {
+  background: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: 600;
+  margin: 4px;
+  font-size: .9rem;
+  transition: all .3s;
+}
+.course-tabs .nav-pills .nav-link.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+.course-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  height: 100%;
+  border-top: 4px solid var(--red);
+  transition: transform .3s;
+}
+.course-card:hover { transform: translateY(-4px); }
+.course-card h5 { font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.duration-badge {
+  background: var(--red);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.course-topics { list-style: none; padding: 0; margin: 0; }
+.course-topics li { font-size: .88rem; color: #555; margin-bottom: 5px; }
+.course-topics li::before { content: '✓ '; color: var(--red); font-weight: 700; }
+.sub-heading { font-size: .85rem; font-weight: 700; color: var(--dark); margin: 12px 0 8px; }
+.note-small { font-size: .8rem; color: #999; margin-top: 12px; margin-bottom: 0; }
+
+/* TABLES */
+.table-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+.table-card thead th { background: var(--dark); color: #fff; font-weight: 700; border: none; }
+.table-card tbody td { vertical-align: middle; border-color: #f0f0f0; font-size: .9rem; }
+.table-card tbody tr:hover td { background: #fff5f4; }
+.degree-head th { background: var(--red) !important; }
+.fee-note-box {
+  background: #fff8f7;
+  border-left: 3px solid var(--red);
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-size: .85rem;
+  color: #555;
+}
+
+/* O LEVEL */
+.o-level-card {
+  background: linear-gradient(135deg, #357abf, #294d72);
+  color: #fff;
+  border-radius: 20px;
+  padding: 36px;
+}
+.o-level-card h4 { color: var(--gold); font-weight: 800; margin-bottom: 20px; }
+.module-row {
+  background: rgba(255,255,255,.07);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+}
+.module-code { color: var(--gold); font-weight: 700; font-size: .85rem; }
+.module-name { font-size: .88rem; color: rgba(255,255,255,.85); }
+.o-info-box {
+  background: rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 24px;
+}
+.o-info-box ul { color: rgba(255,255,255,.8); font-size: .9rem; padding-left: 16px; line-height: 2; }
+
+/* BATCH TIMING */
+.timing-section { background: linear-gradient(135deg, #357abf, #294d72); padding: 80px 0; }
+.timing-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 32px;
+  color: #fff;
+}
+.timing-card h4 { color: var(--gold); font-weight: 800; margin-bottom: 20px; text-align: center; }
+.time-slot {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size: .9rem;
+}
+.time-slot:last-child { border: none; }
+.time-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); margin-right: 14px; flex-shrink: 0; }
+
+/* DIRECTOR */
+.director-section-new { padding: 90px 0; background: #fff; }
+.director-photo-wrap { position: relative; }
+.director-photo-wrap img {
+  border-radius: 20px;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  box-shadow: 20px 20px 0 var(--red);
+}
+.director-label { color: var(--red); font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: 2px; }
+.director-section-new h2 { font-size: 2.2rem; font-weight: 800; margin: 12px 0 24px; }
+.director-section-new p.dir-para { color: #666; line-height: 1.9; margin-bottom: 12px; }
+.signature { border-top: 2px solid #eee; padding-top: 20px; margin-top: 20px; }
+.signature h5 { font-weight: 800; margin-bottom: 4px; }
+.signature .sig-title { color: var(--red); font-weight: 700; font-size: 1.1rem; margin: 0; }
+
+/* CONTACT */
+.contact-section { padding: 90px 0; background: var(--light-bg); }
+.contact-card-dark {
+  background: linear-gradient(135deg, #357abf, #294d72);
+  color: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  height: 100%;
+}
+.contact-card-dark h4 { color: var(--gold); font-weight: 800; margin-bottom: 24px; }
+.contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+.contact-icon {
+  width: 42px; height: 42px;
+  background: rgba(230,51,18,.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.contact-item p { margin: 0; color: rgba(255,255,255,.8); font-size: .95rem; line-height: 1.7; }
+.contact-item strong { display: block; color: #fff; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.info-card-white {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+.info-card-white h4 { font-weight: 800; color: var(--dark); margin-bottom: 20px; }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.cert-tag {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 8px;
+}
+.admission-note {
+  background: #fff5f4;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: .88rem;
+  color: #555;
+}
+
+/* CTA */
+.cta-section-new {
+  background: linear-gradient(135deg, var(--red), #c72a0e);
+  padding: 80px 0;
+  text-align: center;
+}
+.cta-section-new h2 { color: #fff; font-size: 2.6rem; font-weight: 800; }
+.cta-section-new p { color: rgba(255,255,255,.85); font-size: 1.1rem; margin: 12px 0 32px; }
+.btn-cta-white {
+  background: #fff;
+  color: var(--red);
+  font-weight: 800;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  text-decoration: none;
+  display: inline-block;
+  margin: 6px;
+  transition: all .3s;
+}
+.btn-cta-white:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.25); color: var(--red); }
+.btn-cta-outline-white {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.6);
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  text-decoration: none;
+  display: inline-block;
+  margin: 6px;
+  transition: all .3s;
+}
+.btn-cta-outline-white:hover { border-color: #fff; color: #fff; }
+
+/* RESPONSIVE */
+@media(max-width:991px) {
+  .hero-section-new h1 { font-size: 2.4rem; }
+  .hero-stats { gap: 24px; }
+  .director-photo-wrap img { box-shadow: 10px 10px 0 var(--red); }
+}
+@media(max-width:576px) {
+  .hero-section-new h1 { font-size: 2rem; }
+  .hero-stats { gap: 16px; }
+  .stat-num { font-size: 1.5rem; }
+  .section-title h2 { font-size: 1.8rem; }
+  .cta-section-new h2 { font-size: 1.8rem; }
+  .o-level-card { padding: 24px; }
+}
+</style>
+
+<!-- PROFESSIONAL HERO WITH CAROUSEL + CONTENT -->
+<section class="hero-section position-relative">
+
+<!-- Background Carousel -->
+<div id="mainSlider"
+class="carousel slide carousel-fade hero-carousel"
+data-bs-ride="carousel"
+data-bs-interval="4000"
+data-bs-pause="false">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<img src="/images/img1.jpeg" class="d-block w-100 hero-bg-img" alt="">
+</div>
+
+<div class="carousel-item">
+<img src="/images/img2.jpeg" class="d-block w-100 hero-bg-img" alt="">
+</div>
+
+<div class="carousel-item">
+<img src="/images/img3.jpeg" class="d-block w-100 hero-bg-img" alt="">
+</div>
+
+<div class="carousel-item">
+<img src="/images/img4.jpeg" class="d-block w-100 hero-bg-img" alt="">
+</div>
+
+</div>
+
+<!-- Controls -->
+<button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</button>
+
+<button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+<span class="carousel-control-next-icon"></span>
+</button>
+
+</div>
+
+<!-- Dark Overlay -->
+<div class="hero-overlay"></div>
+
+<!-- Foreground Content -->
+<div class="container hero-content-wrap">
+<div class="row align-items-center g-5 min-vh-100">
+
+<!-- Left -->
+<div class="col-lg-6 text-white">
+
+<div class="hero-badge">
+Est. 2004 · Trusted Institute
+</div>
+
+<h1 class="hero-title">
+Build Your Career <br>
+With <span>Technology</span>
+</h1>
+
+<p class="hero-lead">
+Modern Computer Training Institute · Government Recognized ·
+Professional Courses · Thousands of Students Trained.
+</p>
+
+<div class="mt-4 d-flex flex-wrap gap-3">
+<a href="/courses" class="btn btn-danger btn-lg px-4 rounded-pill">
+Explore Courses
+</a>
+
+<a href="/contact" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+Contact Us
+</a>
+</div>
+
+<div class="hero-stats mt-5">
+<div class="stat-box">
+<h3>20+</h3>
+<p>Years</p>
+</div>
+
+<div class="stat-box">
+<h3>15+</h3>
+<p>Courses</p>
+</div>
+
+<div class="stat-box">
+<h3>1000+</h3>
+<p>Students</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<style>
+.hero-section{
+position:relative;
+overflow:hidden;
+}
+
+.hero-carousel,
+.hero-bg-img{
+height:100vh;
+min-height:700px;
+}
+
+.hero-bg-img{
+object-fit:cover;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to right, rgba(0,0,0,.75), rgba(0,0,0,.45));
+z-index:2;
+}
+
+.hero-content-wrap{
+position:absolute;
+top:0;
+left:0;
+right:0;
+z-index:5;
+}
+
+.hero-badge{
+display:inline-block;
+padding:8px 16px;
+background:rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.2);
+border-radius:30px;
+color:#fff;
+font-size:.9rem;
+margin-bottom:20px;
+backdrop-filter:blur(10px);
+}
+
+.hero-title{
+font-size:4rem;
+font-weight:800;
+line-height:1.15;
+color:#fff;
+}
+
+.hero-title span{
+color:#ff5e57;
+}
+
+.hero-lead{
+font-size:1.15rem;
+max-width:600px;
+color:#eee;
+margin-top:20px;
+}
+
+.hero-stats{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.stat-box{
+background:rgba(255,255,255,.12);
+padding:18px 25px;
+border-radius:18px;
+min-width:120px;
+text-align:center;
+backdrop-filter:blur(8px);
+color:#fff;
+}
+
+.stat-box h3{
+margin:0;
+font-size:2rem;
+font-weight:700;
+}
+
+.stat-box p{
+margin:0;
+font-size:.95rem;
+}
+
+.hero-card{
+background:rgba(255,255,255,.95);
+padding:35px;
+border-radius:24px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.course-list{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.course-list span{
+padding:10px 16px;
+background:#f1f1f1;
+border-radius:30px;
+font-weight:600;
+font-size:.95rem;
+}
+
+.badge-cert{
+display:inline-block;
+padding:10px 16px;
+background:#ff5e57;
+color:#fff;
+border-radius:30px;
+margin:5px;
+font-size:.9rem;
+}
+
+.btn-danger{
+background:#ff5e57;
+border:none;
+}
+
+.btn-danger:hover{
+background:#ff3b30;
+}
+
+/* Tablet */
+@media(max-width:991px){
+
+.hero-carousel,
+.hero-bg-img{
+height:auto;
+min-height:950px;
+}
+
+.hero-content-wrap{
+position:absolute;
+padding-top:60px;
+}
+
+.hero-title{
+font-size:2.8rem;
+}
+
+.hero-card{
+margin-top:20px;
+}
+
+}
+
+/* Mobile */
+@media(max-width:576px){
+
+.hero-title{
+font-size:2.1rem;
+}
+
+.hero-lead{
+font-size:1rem;
+}
+
+.stat-box{
+min-width:95px;
+padding:14px;
+}
+
+.hero-card{
+padding:22px;
+}
+
+.course-list span{
+font-size:.85rem;
+padding:8px 12px;
+}
+
+}
+</style>
+
+
+
+
+
+
+
+
+<section class="features-dark">
+  <div class="container">
+    <div class="section-title">
+      <div class="text-white">Why Choose Us</div>
+      <h2 style="color:#fff">What Makes Saaz Different</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card-dark">
+          <div class="feature-icon">🏛️</div>
+          <h5>Govt. Recognized</h5>
+          <p>Registered & recognized by Government of India. Regd. No. 21-1860/3687</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card-dark">
+          <div class="feature-icon">📜</div>
+          <h5>NIELIT Certified</h5>
+          <p>Authorized NIELIT center for CCC, O' Level & other national IT programs</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card-dark">
+          <div class="feature-icon">🧑‍🏫</div>
+          <h5>Expert Faculty</h5>
+          <p>Experienced instructors with practical industry knowledge and modern teaching</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card-dark">
+          <div class="feature-icon">⏰</div>
+          <h5>Flexible Timing</h5>
+          <p>Morning & evening batches from 7 AM to 7:45 PM — 12 flexible batch slots</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     COURSES
+=============================== -->
+<section class="courses-section" id="courses">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">Programs We Offer</div>
+      <h2>Explore Our Courses</h2>
+      <p>From short-term certifications to full-year professional diplomas and degree programs</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="course-tabs mb-5">
+      <ul class="nav nav-pills justify-content-center flex-wrap" id="courseTabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="main-tab" data-bs-toggle="pill" href="#tab-main" role="tab" style="color:black">Main Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="short-tab" data-bs-toggle="pill" href="#tab-short" role="tab" style="color:black">Short Term</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="degree-tab" data-bs-toggle="pill" href="#tab-degree" role="tab" style="color:black">Degree Programs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="olevel-tab" data-bs-toggle="pill" href="#tab-olevel" role="tab" style="color:black">O' Level</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tab-content">
+
+      <!-- ---- MAIN COURSES ---- -->
+      <div class="tab-pane fade show active text-dark" id="tab-main" role="tabpanel">
+        <div class="row g-4">
+
+          <!-- CTTC / ADCA -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">1 Year · Eligibility: 10+2</div>
+              <h5>CTTC / ADCA</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Computer Teacher Training Course / Advanced Diploma in Computer Application</p>
+              <p class="sub-heading">Semester 1:</p>
+              <ul class="course-topics">
+                <li>Computer Concept &amp; Fundamental</li>
+                <li>Operating System (DOS, Windows 2000, XP, 7)</li>
+                <li>MS Office (Word, Excel, PowerPoint, Access)</li>
+                <li>Desktop Publish (CorelDraw, PageMaker, Photoshop)</li>
+              </ul>
+              <p class="sub-heading">Semester 2:</p>
+              <ul class="course-topics">
+                <li>HTML, CSS, JavaScript</li>
+                <li>Python</li>
+                <li>Internet E-mail &amp; Communication</li>
+                <li>Micro Teachings (Practical to all subjects)</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+          <!-- Tally ERP -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">6 Months · Eligibility: 10th</div>
+              <h5>Tally ERP.9 with GST &amp; Tally Prime</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Financial Accounting</p>
+              <p class="sub-heading">Module I – Non Trading:</p>
+              <ul class="course-topics">
+                <li>Introduction of Service Organization</li>
+                <li>Company Creation, Feature &amp; Configuration</li>
+                <li>Group &amp; Ledger Creation, Types of Voucher</li>
+                <li>GST with Services, Journal Entries</li>
+              </ul>
+              <p class="sub-heading">Module II – Trading Org:</p>
+              <ul class="course-topics">
+                <li>Balance Sheet, Inventory, Bill-wise Details</li>
+                <li>Stock Journal, Credit &amp; Debit Notes</li>
+                <li>Bank Reconciliation (BRS), Multiple Price Level</li>
+                <li>Finalization, Backup &amp; Restore, Import/Export</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+          <!-- CCC -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">3 Months · Eligibility: 10th</div>
+              <h5>CCC (NIELIT)</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Course on Computer Concept</p>
+              <ul class="course-topics">
+                <li>Introduction to Computer</li>
+                <li>Introduction to GUI Based Operating System</li>
+                <li>Elements of Word Processing (Libre Office)</li>
+                <li>Spread Sheets</li>
+                <li>Making Small Presentations</li>
+                <li>Computer Communication &amp; Internet</li>
+                <li>WWW and Web Browser</li>
+                <li>Communication and Collaboration</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+          <!-- DCA -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">6 Months · Eligibility: 10th</div>
+              <h5>DCA</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Diploma in Computer Application</p>
+              <ul class="course-topics">
+                <li>Computer Concept &amp; Fundamental</li>
+                <li>Operating System (DOS, Windows 2000, XP, 7)</li>
+                <li>MS Office (Word, Excel, PowerPoint, Access)</li>
+                <li>DTP, CorelDraw, PageMaker, Photoshop</li>
+                <li>Internet &amp; HTML</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+          <!-- CCCA -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">3 Months · Eligibility: 10th</div>
+              <h5>CCCA</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Certificate Course of Computer Application</p>
+              <ul class="course-topics">
+                <li>Computer Concept &amp; Fundamental</li>
+                <li>Operating System (DOS, Windows 2000, XP, 7)</li>
+                <li>MS Office (Word, Excel, PowerPoint, Access)</li>
+                <li>Internet Introduction</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+          <!-- DTP -->
+          <div class="col-md-6 col-lg-4">
+            <div class="course-card">
+              <div class="duration-badge">3 Months · Eligibility: 10th</div>
+              <h5>DTP</h5>
+              <p style="font-size:.82rem;color:#888;margin-bottom:14px">Certificate in Desktop Publishing</p>
+              <ul class="course-topics">
+                <li>Computer Concept &amp; Fundamental</li>
+                <li>Operating System (DOS, Windows 2000, XP, 7)</li>
+                <li>Page Maker &amp; CorelDraw</li>
+                <li>Photoshop &amp; M.S. Paint</li>
+              </ul>
+              <p class="note-small">📎 Docs: 10th Certificate, 2 Photos, Aadhar Card</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---- SHORT TERM ---- -->
+      <div class="tab-pane fade text-dark" id="tab-short" role="tabpanel">
+        <div class="table-card">
+          <h5 class="fw-bold mb-4" style="color:var(--dark)">Short Term Courses</h5>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Course</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>'C'</td><td>2 Months</td></tr>
+                <tr><td>2</td><td>'C++'</td><td>2 Months</td></tr>
+                <tr><td>3</td><td>'C &amp; C++'</td><td>3 Months</td></tr>
+                <tr><td>4</td><td>Python</td><td>2 Months</td></tr>
+                <tr><td>5</td><td>Data Structure</td><td>2 Months</td></tr>
+                <tr><td>6</td><td>JAVA / Advanced</td><td>2 Months</td></tr>
+                <tr><td>7</td><td>HTML / JAVA / CSS</td><td>4 Months</td></tr>
+                <tr><td>8</td><td>Advanced Excel</td><td>1 Month</td></tr>
+                <tr><td>9</td><td>M.S. Office</td><td>2 Months</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note-small mt-2">📎 Required: 10th Certificate Photocopy, 2 Photos, Aadhar Card Photocopy</p>
+        </div>
+      </div>
+
+      <!-- ---- DEGREE PROGRAMS ---- -->
+      <div class="tab-pane fade text-dark" id="tab-degree" role="tabpanel">
+        <div class="table-card">
+          <h5 class="fw-bold mb-2" style="color:var(--dark)">Degree Courses</h5>
+          <p style="color:#888;font-size:.9rem;margin-bottom:20px">Distance and Regular Education · All courses are Yearly mode</p>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="degree-head">
+                <tr>
+                  <th>Sr.n.</th>
+                  <th>Course Name</th>
+                  <th>Mode</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td><strong>BCA</strong> – Bachelor of Computer Application</td><td>Yearly</td></tr>
+                <tr><td>2</td><td><strong>B.Sc</strong> – Bachelor of Science</td><td>Yearly</td></tr>
+                <tr><td>3</td><td><strong>MCA</strong> – Master of Computer Application</td><td>Yearly</td></tr>
+                <tr><td>4</td><td><strong>M.Sc</strong> – Master of Science</td><td>Yearly</td></tr>
+                <tr><td>5</td><td><strong>PGDCA</strong> – Post Graduate Diploma in Computer Application</td><td>Yearly</td></tr>
+                <tr><td>6</td><td><strong>BBA</strong> – Bachelor of Business Administration</td><td>Yearly</td></tr>
+                <tr><td>7</td><td><strong>MBA</strong> – Master of Business Administration</td><td>Yearly</td></tr>
+                <tr><td>8</td><td><strong>M.A</strong> – Master of Arts</td><td>Yearly</td></tr>
+                <tr><td>9</td><td><strong>B.A</strong> – Bachelor of Arts</td><td>Yearly</td></tr>
+                <tr><td>10</td><td><strong>M.Com</strong> – Master of Commerce</td><td>Yearly</td></tr>
+                <tr><td>11</td><td><strong>B.Com</strong> – Bachelor of Commerce</td><td>Yearly</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="fee-note-box">
+            <strong>Note:</strong>
+            <ol style="margin:8px 0 0 16px;padding:0">
+              <li>Above fee is excluding admission fees of Rs. 500/- payable at time of admission.</li>
+              <li>Rs. 1000/- will be payable with fees in final semester/Year for degree Certificate. Degree will be issued after convocation of University.</li>
+              <li>Lateral admission fee Rs. 2000/- whenever applicable.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- O' LEVEL ---- -->
+      <div class="tab-pane text-dark" id="tab-olevel" role="tabpanel">
+        <div class="o-level-card">
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <h4>O' Level – National IT Certification (NIELIT)</h4>
+              <div class="d-flex gap-4 flex-wrap mb-4">
+                <div><strong style="color:var(--gold)">Eligibility:</strong> <span style="color:rgba(255,255,255,.8)">10+2 or Equivalent</span></div>
+                <div><strong style="color:var(--gold)">Duration:</strong> <span style="color:rgba(255,255,255,.8)">1 Year</span></div>
+                <div><strong style="color:var(--gold)">Regd. Validity:</strong> <span style="color:rgba(255,255,255,.8)">5 Years</span></div>
+              </div>
+              <h6 style="color:#fff;font-weight:700;margin-bottom:14px">MODULES</h6>
+              <div class="module-row">
+                <div class="module-code">M1-R5</div>
+                <div class="module-name">Information Technology Tools and Network Basic</div>
+              </div>
+              <div class="module-row">
+                <div class="module-code">M2-R5</div>
+                <div class="module-name">Web Designing &amp; Publishing</div>
+              </div>
+              <div class="module-row">
+                <div class="module-code">M3-R5</div>
+                <div class="module-name">Programming and Problem Solving Through Python</div>
+              </div>
+              <div class="module-row">
+                <div class="module-code">M4-R5</div>
+                <div class="module-name">Internet of Things and its Application (IoT)</div>
+              </div>
+              <div class="module-row">
+                <div class="module-code">PR1-R5</div>
+                <div class="module-name">Practical Based M1, M2, R5, M3-R5 and M4-R5</div>
+              </div>
+              <div class="module-row">
+                <div class="module-code">PJ1-R5</div>
+                <div class="module-name">Project</div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="o-info-box">
+                <h6 style="color:var(--gold);font-weight:700;margin-bottom:16px">Documents Required</h6>
+                <ul>
+                  <li>10th and 12th Mark Sheet &amp; Certificate Photo Copy</li>
+                  <li>Aadhar Card</li>
+                  <li>2 Passport Size Photos</li>
+                </ul>
+                <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-top:16px">
+                  <h6 style="color:var(--gold);font-weight:700;margin-bottom:10px">Exam Cycle</h6>
+                  <p style="color:rgba(255,255,255,.7);font-size:.88rem;margin:0">Contact institute for current exam cycle &amp; fee details.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-content -->
+  </div>
+</section>
+
+<!-- ==============================
+     BATCH TIMING
+=============================== -->
+<section class="timing-section" id="timing">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">Flexible Schedule</div>
+      <h2 style="color:#fff">Batch Timings</h2>
+      <p style="color:rgba(255,255,255,.6)">Choose a slot that fits your schedule — morning or evening</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5">
+        <div class="timing-card">
+          <h4>🌅 Morning Batches</h4>
+          <div class="time-slot"><span class="time-dot"></span><span>07:00 to 08:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>08:00 to 09:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>09:00 to 10:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>10:00 to 11:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>11:00 to 12:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>12:00 to 01:45</span></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="timing-card">
+          <h4>🌆 Evening Batches</h4>
+          <div class="time-slot"><span class="time-dot"></span><span>01:00 to 02:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>02:00 to 03:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>03:00 to 04:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>04:00 to 05:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>05:00 to 06:45</span></div>
+          <div class="time-slot"><span class="time-dot"></span><span>06:00 to 07:45</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     DIRECTOR MESSAGE
+=============================== -->
+<section class="director-section-new" id="director">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-5 text-center">
+        <div class="director-photo-wrap">
+          <img src="/images/director.jpeg" class="img-fluid" alt="Director – Saaz Group of Education">
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="director-label">Director Message</div>
+        <h2>Welcome To SAAZ Group of Education</h2>
+        <p class="dir-para">Dear Students, Parents and Visitors,</p>
+        <p class="dir-para">Welcome to SAAZ Group of Education. Our aim is to provide quality computer education and practical knowledge so that students can build a strong and successful career.</p>
+        <p class="dir-para">Education is the most powerful tool that helps individuals grow, gain confidence, and contribute to society.</p>
+        <p class="dir-para">We focus on skill-based learning and modern computer education such as O Level, CCC, Tally and other professional courses.</p>
+        <p class="dir-para">With experienced faculty, modern teaching methods, and a supportive environment, we help students achieve their goals.</p>
+        <p class="dir-para">I invite all students to join our institute and take a step toward a brighter career.</p>
+        <div class="signature">
+          <h5>Best Wishes</h5>
+          <p class="sig-title">Director</p>
+          <span style="font-weight:600;color:#555">SAAZ Group of Education</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     CONTACT
+=============================== -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">Get In Touch</div>
+      <h2>Contact Us</h2>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-lg-5">
+        <div class="contact-card-dark">
+          <h4>Saaz Computer Institute</h4>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <p>Behind Bata Showroom,<br>Degree College Road, Raebareli</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone Numbers</strong>
+              <p>
+                <a href="tel:9838330985" style="color:inherit;text-decoration:none">9838330985</a><br>
+                <a href="tel:6393104219" style="color:inherit;text-decoration:none">6393104219</a><br>
+                <a href="tel:05353560615" style="color:inherit;text-decoration:none">0535-3560615</a>
+              </p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🏢</div>
+            <div>
+              <strong>Registration</strong>
+              <p>Regd. No. : 21-1860/3687<br>Recognized By Government</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="info-card-white">
+          <h4>Institute Certifications</h4>
+          <div class="cert-row">
+            <span class="cert-tag">✅ ISO 9001:2015 Certified</span>
+            <span class="cert-tag">🏛️ Govt. Recognized</span>
+            <span class="cert-tag">📜 NIELIT Authorized</span>
+            <span class="cert-tag">🏢 Ministry of MSME</span>
+          </div>
+          <p style="color:#666;font-size:.9rem;margin-bottom:20px">
+            A Division of Saaz Computer Institute of Technology — An ISO 9001:2015 Certified National IT Development Org (Ministry of MSME, Govt. of India)
+          </p>
+          <h5 style="font-weight:700;color:var(--dark);margin-bottom:14px">Documents Required for Admission</h5>
+          <ul style="color:#666;font-size:.9rem;line-height:2;padding-left:18px">
+            <li>10th Certificate Photocopy (12th for some courses)</li>
+            <li>2 Passport Size Photographs</li>
+            <li>Aadhar Card Photocopy</li>
+          </ul>
+          <div class="admission-note">
+            💡 <strong>Fee Note:</strong> Admission fee Rs. 500/- payable at time of admission. Degree certificate fee Rs. 1000/- payable in final semester. Lateral admission fee Rs. 2000/- whenever applicable. Contact institute for current course-wise fee details.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     CTA
+=============================== -->
+<section class="cta-section-new">
+  <div class="container">
+    <h2>Ready To Start Your Career?</h2>
+
+    <p>
+      Join thousands of students who have built successful careers
+      with Saaz Group of Education
+    </p>
+
+    <a href="#contact" class="btn-cta-white">
+      📞 Contact Now
+    </a>
+
+    <a href="#courses" class="btn-cta-outline-white">
+      View Courses
+    </a>
+  </div>
+</section>
+
+<%- include("partials/footer") %>
